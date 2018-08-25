@@ -1,6 +1,8 @@
-﻿namespace ctlBreakoutLib
+﻿using System;
+
+namespace ctlBreakoutLib
 {
-    partial class UserControl1
+    partial class ctlBreakout
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,8 +30,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // ctlBreakout
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "ctlBreakout";
+            this.Size = new System.Drawing.Size(500, 500);
+            this.Load += new System.EventHandler(this.ctlBreakout_Load_and_CreateBackBuffer);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.ctlBreakout_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ctlBreakout_KeyDown);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.ctlBreakout_PreviewKeyDown);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

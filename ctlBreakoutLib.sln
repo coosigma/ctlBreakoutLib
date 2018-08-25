@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ctlBreakoutLib", "ctlBreakoutLib\ctlBreakoutLib.csproj", "{6EF47ED8-0C36-4068-A16E-927C78A48D6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breakout", "Breakout\Breakout.csproj", "{EF383A7E-D709-4759-897D-4E6EDB13CB85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6EF47ED8-0C36-4068-A16E-927C78A48D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EF47ED8-0C36-4068-A16E-927C78A48D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EF47ED8-0C36-4068-A16E-927C78A48D6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF383A7E-D709-4759-897D-4E6EDB13CB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF383A7E-D709-4759-897D-4E6EDB13CB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF383A7E-D709-4759-897D-4E6EDB13CB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF383A7E-D709-4759-897D-4E6EDB13CB85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
