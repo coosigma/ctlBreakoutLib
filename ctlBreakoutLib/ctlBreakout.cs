@@ -16,10 +16,7 @@ namespace ctlBreakoutLib
         Ball ball;
         Plate plate;
         ArrayList Bricks = new ArrayList();
-        Wall lWall;
-        Wall rWall;
-        Wall Celling;
-        Wall Floor;
+        ArrayList Walls = new ArrayList();
 
         public ctlBreakout()
         {
@@ -38,10 +35,10 @@ namespace ctlBreakoutLib
             ball = new Ball(this, new Point(10, 10), new Size(10, 10), Color.Yellow);
             plate = new Plate(this, new Point(10, 450), new Size(50, 11), Color.White);
             CreateBricks(Bricks);
-            lWall = new Wall(this, new Point(-1, 0), new Size(1, this.Size.Height), Color.Black);
-            rWall = new Wall(this, new Point(this.Size.Width, 0), new Size(1, this.Size.Height), Color.Black);
-            Celling = new Wall(this, new Point(0, -1), new Size(this.Size.Width, 1), Color.Black);
-            Floor = new Wall(this, new Point(0, this.Size.Height), new Size(this.Size.Width, 1), Color.Black);
+            Walls.Add(new Wall(this, new Point(-1, 0), new Size(1, this.Size.Height), Color.Black));
+            Walls.Add(new Wall(this, new Point(this.Size.Width, 0), new Size(1, this.Size.Height), Color.Black));
+            Walls.Add(new Wall(this, new Point(0, -1), new Size(this.Size.Width, 1), Color.Black));
+            Walls.Add(new Wall(this, new Point(0, this.Size.Height), new Size(this.Size.Width, 1), Color.Black));
         }
 
         private void CreateBricks(ArrayList bs)
@@ -89,7 +86,18 @@ namespace ctlBreakoutLib
         }
         private void Collision()
         {
-
+            if (ball.Collision(plate))
+                return;
+            foreach (Wall w in Walls)
+            {
+                if (ball.Collision(w))
+                    return;
+            }
+            foreach (Brick b in Bricks)
+            {
+                if (ball.Collision(b))
+                    return;
+            }
         }
         private void ctlBreakout_Load_and_CreateBackBuffer(object sender, EventArgs e)
         {

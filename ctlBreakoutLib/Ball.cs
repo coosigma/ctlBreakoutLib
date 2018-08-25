@@ -23,9 +23,9 @@ namespace ctlBreakoutLib
             int newY = Position.Y + Offset.Y + yOffset;
             this.Position = new Point(newX, newY);
         }
-        public void Collision(Figure f)
+        public bool Collision(Figure f)
         {
-
+            return false;
         }
     }
 }
