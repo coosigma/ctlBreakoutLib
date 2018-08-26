@@ -16,7 +16,7 @@ namespace ctlBreakoutLib
         Ball ball;
         Plate plate;
         ArrayList Bricks = new ArrayList();
-        ArrayList Walls = new ArrayList();
+        House house;
 
         public ctlBreakout()
         {
@@ -33,12 +33,10 @@ namespace ctlBreakoutLib
 
             // Create Figure objects.
             ball = new Ball(this, new Vector(10d, 10d), new Size(10, 10), Color.Yellow);
+            ball.Offset = new Vector(-0.5, 1);
             plate = new Plate(this, new Vector(10d, 450d), new Size(50, 11), Color.White);
             CreateBricks(Bricks);
-            Walls.Add(new Wall(this, new Vector(-1, 0), new Size(1, this.Size.Height), Color.Black));
-            Walls.Add(new Wall(this, new Vector(this.Size.Width, 0), new Size(1, this.Size.Height), Color.Black));
-            Walls.Add(new Wall(this, new Vector(0, -1), new Size(this.Size.Width, 1), Color.Black));
-            Walls.Add(new Wall(this, new Vector(0, this.Size.Height), new Size(this.Size.Width, 1), Color.Black));
+            house = new House(this, new Vector(0, 0), new Size(this.Size.Width, this.Size.Height), Color.Black);
         }
 
         private void CreateBricks(ArrayList bs)
@@ -86,18 +84,12 @@ namespace ctlBreakoutLib
         }
         private void Collision()
         {
-            if (ball.Collision(plate))
+            //if (ball.Collision(plate))
+            //    return;
+            //if (ball.Collision(house))
+            //    return;
+            if (ball.Collision(house))
                 return;
-            foreach (Wall w in Walls)
-            {
-                if (ball.Collision(w))
-                    return;
-            }
-            foreach (Brick b in Bricks)
-            {
-                if (ball.Collision(b))
-                    return;
-            }
         }
         private void ctlBreakout_Load_and_CreateBackBuffer(object sender, EventArgs e)
         {

@@ -47,9 +47,13 @@ namespace ctlBreakoutLib
             result.y = l1 * l2.y;
             return result;
         }
-        public bool isLeft(Vector a, Vector b)
+        public static Vector operator *(Vector l1, double l2)
         {
-            return (a.x - x) * (b.y - y) - (a.y - y) * (b.x - x) < 0;
+            return l2 * l1;
+        }
+        public bool IsLeft(Vector a, Vector b)
+        {
+            return (b.x - a.x) * (y - a.y) - (b.y - a.y) * (x - a.x) < 0;
         }
         public double GetLen()
         {
@@ -63,10 +67,24 @@ namespace ctlBreakoutLib
             result.y = y / len;
             return result;
         }
+        public Vector GetNormal(bool left)
+        {
+            Vector result = new Vector();
+            if (left)
+            {
+                result.x = y;
+                result.y = -x;
+            } else
+            {
+                result.x = -y;
+                result.y = x;
+            }
+            return result;
+        }
         public Vector GetProject(Vector v)
         {
             Vector u = GetUnit();
-            return (u * v) * u;
+            return (v * u) * u;
         }
         public Point ToPoint()
         {
