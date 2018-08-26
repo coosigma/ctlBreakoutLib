@@ -32,13 +32,13 @@ namespace ctlBreakoutLib
             GameTimer.Start();
 
             // Create Figure objects.
-            ball = new Ball(this, new Point(10, 10), new Size(10, 10), Color.Yellow);
-            plate = new Plate(this, new Point(10, 450), new Size(50, 11), Color.White);
+            ball = new Ball(this, new Vector(10d, 10d), new Size(10, 10), Color.Yellow);
+            plate = new Plate(this, new Vector(10d, 450d), new Size(50, 11), Color.White);
             CreateBricks(Bricks);
-            Walls.Add(new Wall(this, new Point(-1, 0), new Size(1, this.Size.Height), Color.Black));
-            Walls.Add(new Wall(this, new Point(this.Size.Width, 0), new Size(1, this.Size.Height), Color.Black));
-            Walls.Add(new Wall(this, new Point(0, -1), new Size(this.Size.Width, 1), Color.Black));
-            Walls.Add(new Wall(this, new Point(0, this.Size.Height), new Size(this.Size.Width, 1), Color.Black));
+            Walls.Add(new Wall(this, new Vector(-1, 0), new Size(1, this.Size.Height), Color.Black));
+            Walls.Add(new Wall(this, new Vector(this.Size.Width, 0), new Size(1, this.Size.Height), Color.Black));
+            Walls.Add(new Wall(this, new Vector(0, -1), new Size(this.Size.Width, 1), Color.Black));
+            Walls.Add(new Wall(this, new Vector(0, this.Size.Height), new Size(this.Size.Width, 1), Color.Black));
         }
 
         private void CreateBricks(ArrayList bs)
@@ -48,7 +48,7 @@ namespace ctlBreakoutLib
             {
                 for (int j = 40; j < 300; j += 40)
                 {
-                    bs.Add(new Brick(this, new Point(i, j), bSize, Color.Green));
+                    bs.Add(new Brick(this, new Vector(i, j), bSize, Color.Green));
                 }
             }
         }
@@ -81,7 +81,7 @@ namespace ctlBreakoutLib
         void GameTimer_Tick(object sender, EventArgs e)
         {
             Draw();
-            ball.Move();
+            ball.Update();
             Collision();
         }
         private void Collision()

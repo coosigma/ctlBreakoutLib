@@ -10,30 +10,35 @@ namespace ctlBreakoutLib
 {
     class Plate : Figure
     {
-        public Plate(Object o, Point p, Size s, Color c) : base(o, p, s, c)
+        public Plate(Object o, Vector p, Size s, Color c) : base(o, p, s, c)
         {
         }
         public override void Draw(Graphics g)
         {
-            g.FillRectangle(this.Brush, new Rectangle(this.Position, this.Size));
+            g.FillRectangle(this.Brush, new Rectangle(this.Position.ToPoint(), this.Size));
         }
-        public override void Move(int xOffset, int yOffset)
+        public void Move(int xOffset, int yOffset)
         {
             ctlBreakout c = Caller as ctlBreakout;
             // X axis
-            int newX = Position.X + xOffset;
+            double newX = Position.x + xOffset;
             if (newX < 0)
                 newX = 0;
             if (newX + this.Size.Width > c.Size.Width)
                 newX = c.Size.Width - this.Size.Width;
             // Y axis
-            int newY = Position.Y + yOffset;
+            double newY = Position.y + yOffset;
             if (newY < 400)
                 newY = 400;
             if (newY + this.Size.Height > c.Size.Height)
                 newY = c.Size.Height - this.Size.Height;
 
-            this.Position = new Point(newX, newY);
+            this.Position.x = newX;
+            this.Position.y = newY;
+        }
+        public override void Update()
+        { // Nothing to do in this version
+            throw new NotImplementedException();
         }
     }
 }

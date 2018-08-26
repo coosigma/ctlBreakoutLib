@@ -9,13 +9,13 @@ namespace ctlBreakoutLib
 {
     class Wall : Figure
     {
-        public Wall(Object o, Point p, Size s, Color c) : base(o, p, s, c)
+        public Wall(Object o, Vector p, Size s, Color c) : base(o, p, s, c)
         {
         }
         public override void Draw(Graphics g)
         {
         }
-        public override void Move(int xOffset, int yOffset)
+        public override void Update()
         {
         }
 
