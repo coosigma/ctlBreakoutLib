@@ -51,6 +51,10 @@ namespace ctlBreakoutLib
         {
             return l2 * l1;
         }
+        public static Vector operator /(Vector l1, double l2)
+        {
+            return (1/l2) * l1;
+        }
         public bool IsLeft(Vector a, Vector b)
         {
             return (b.x - a.x) * (y - a.y) - (b.y - a.y) * (x - a.x) < 0;
@@ -63,6 +67,8 @@ namespace ctlBreakoutLib
         {
             Vector result = new Vector();
             double len = GetLen();
+            if (len == 0) // divide 0 solution
+                len = 0.0000001;
             result.x = x / len;
             result.y = y / len;
             return result;

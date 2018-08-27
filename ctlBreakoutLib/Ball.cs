@@ -18,6 +18,9 @@ namespace ctlBreakoutLib
         }
         public override void Update()
         {
+            Vector u = Offset.GetUnit();
+            if (Offset.GetLen() > 3) // Limit max speed
+                Offset = u * 3;
             Position = Position + Offset;
         }
         public bool Collision(Figure f)
@@ -41,13 +44,13 @@ namespace ctlBreakoutLib
                 {
                     Console.WriteLine("Collide");          
                     Position += p_length * iv.GetUnit();
-                    Offset = GetBounceVector(l, u);
+                    Offset = GetBounceVector(l, u, f.Offset);
                     return true;
                 }
             }
             return false;
         }
-        private Vector GetBounceVector(Vector l, Vector u)
+        private Vector GetBounceVector(Vector l, Vector u, Vector friction)
         {
             Vector w = u - l;
             Vector pw = w.GetProject(Offset);
@@ -59,7 +62,10 @@ namespace ctlBreakoutLib
             {
                 pn = w.GetNormal(false).GetProject(Offset);
             }
-            return pw - pn;
+            Console.WriteLine("friction: "+friction.x+","+friction.y);
+            Vector fn = friction.GetUnit();
+            Console.WriteLine("friction unit: " + fn.x + "," + fn.y);
+            return pw - pn + friction.GetUnit();
         }
 
         public Vector GetIntersectVector(Vector l, Vector u)
@@ -80,6 +86,14 @@ namespace ctlBreakoutLib
                 p3 = w.GetNormal(false).GetProject(p1);
             }
             return p3;
+        }
+
+        internal bool CheckOutside()
+        {
+            ctlBreakout c = Caller as ctlBreakout;
+            if (Position.y >= c.Size.Height - Size.Height)
+                return true;
+            return false;
         }
     }
 }

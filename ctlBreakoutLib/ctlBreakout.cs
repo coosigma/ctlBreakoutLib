@@ -18,6 +18,7 @@ namespace ctlBreakoutLib
         ArrayList Bricks = new ArrayList();
         House house;
 
+        public int Count = 0;
         public ctlBreakout()
         {
             InitializeComponent();
@@ -33,20 +34,27 @@ namespace ctlBreakoutLib
 
             // Create Figure objects.
             ball = new Ball(this, new Vector(10d, 10d), new Size(10, 10), Color.Yellow);
-            ball.Offset = new Vector(-0.5, 1);
+            ball.Offset = new Vector(-1, 2);
             plate = new Plate(this, new Vector(10d, 450d), new Size(50, 11), Color.White);
             CreateBricks(Bricks);
-            house = new House(this, new Vector(0, 0), new Size(this.Size.Width, this.Size.Height), Color.Black);
+            house = new House(this, new Vector(0, 0), new Size(this.Size.Width, this.Size.Height + ball.Size.Height), Color.Black);
         }
 
         private void CreateBricks(ArrayList bs)
         {
+            Random randomGen = new Random();
+            KnownColor[] names = (KnownColor[])Enum.GetValues(typeof(KnownColor));
+
             Size bSize = new Size(50, 12);
             for (int i = 30; i < this.Size.Width; i += 80)
             {
                 for (int j = 40; j < 300; j += 40)
                 {
-                    bs.Add(new Brick(this, new Vector(i, j), bSize, Color.Green));
+                    KnownColor randomColorName = names[randomGen.Next(names.Length)];
+                    Color randomColor = Color.Black;
+                    while (randomColor == Color.Black)
+                        randomColor = Color.FromKnownColor(randomColorName);
+                    bs.Add(new Brick(this, new Vector(i, j), bSize, randomColor));
                 }
             }
         }
@@ -68,8 +76,8 @@ namespace ctlBreakoutLib
                     g.Clear(Color.Black);
                     plate.Draw(g);
                     ball.Draw(g);
-                    foreach(Brick b in Bricks) {
-                       b.Draw(g);
+                    foreach (Brick b in Bricks) {
+                        b.Draw(g);
                     }
                 }
                 Invalidate();
@@ -80,16 +88,31 @@ namespace ctlBreakoutLib
         {
             Draw();
             ball.Update();
+            if (ball.CheckOutside())
+            {
+                Console.WriteLine("game over");
+            }
             Collision();
+            if (Count % 10 == 0)
+                plate.Update();
+            Count++;
         }
         private void Collision()
         {
-            //if (ball.Collision(plate))
-            //    return;
-            //if (ball.Collision(house))
-            //    return;
+            if (ball.Collision(plate))
+                return;
             if (ball.Collision(house))
                 return;
+            foreach (Brick b in Bricks)
+            {
+                if (ball.Collision(b))
+                {
+                    Bricks.Remove(b);
+                    return;
+                }
+
+            }
+
         }
         private void ctlBreakout_Load_and_CreateBackBuffer(object sender, EventArgs e)
         {
@@ -103,15 +126,15 @@ namespace ctlBreakoutLib
 
         private void ctlBreakout_KeyDown(object sender, KeyEventArgs e)
         {
-            int ControlSpeed = 10;
-            if (e.KeyCode == Keys.A) // left
+            int ControlSpeed = 15;
+            if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left ) // left
                 plate.Move(-ControlSpeed, 0);
-            else if (e.KeyCode == Keys.D) // right
+            else if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right) // right
                 plate.Move(ControlSpeed, 0);
-            else if (e.KeyCode == Keys.W) // up
-                plate.Move(0, -ControlSpeed);
-            else if (e.KeyCode == Keys.S) // down
-                plate.Move(0, ControlSpeed);
+            //else if (e.KeyCode == Keys.W) // up
+            //    plate.Move(0, -ControlSpeed);
+            //else if (e.KeyCode == Keys.S) // down
+            //    plate.Move(0, ControlSpeed);
         }
 
         private void ctlBreakout_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)

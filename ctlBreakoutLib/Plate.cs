@@ -22,12 +22,14 @@ namespace ctlBreakoutLib
             ctlBreakout c = Caller as ctlBreakout;
             // X axis
             double newX = Position.x + xOffset;
+            Offset.x = xOffset;
             if (newX < 0)
                 newX = 0;
             if (newX + this.Size.Width > c.Size.Width)
                 newX = c.Size.Width - this.Size.Width;
             // Y axis
             double newY = Position.y + yOffset;
+            Offset.y = yOffset;
             if (newY < 400)
                 newY = 400;
             if (newY + this.Size.Height > c.Size.Height)
@@ -37,8 +39,9 @@ namespace ctlBreakoutLib
             this.Position.y = newY;
         }
         public override void Update()
-        { // Nothing to do in this version
-            throw new NotImplementedException();
+        {
+            Offset.x = 0;
+            Offset.y = 0;
         }
     }
 }
