@@ -52,6 +52,11 @@
     <Compile Include="Figure.cs" />
     <Compile Include="Plate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Vector.cs" />
     <Compile Include="House.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
@@ -60,6 +65,31 @@
     <EmbeddedResource Include="ctlBreakout.resx">
       <DependentUpon>ctlBreakout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sound\complete.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sound\gameover.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sound\hitBrick.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sound\hitPlate.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sound\hitWall.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sound\Void.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

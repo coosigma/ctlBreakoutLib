@@ -86,10 +86,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cover.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cover.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

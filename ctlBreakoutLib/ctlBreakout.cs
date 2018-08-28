@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Drawing;
+using System.Media;
 using System.Windows.Forms;
 
 namespace ctlBreakoutLib
@@ -19,6 +20,12 @@ namespace ctlBreakoutLib
         ArrayList Bricks;
         House house;
         Brick ceiling;
+        SoundPlayer sndVoid = new SoundPlayer(ctlBreakoutLib.Properties.Resources.Void);
+        SoundPlayer sndGameOver = new SoundPlayer(ctlBreakoutLib.Properties.Resources.gameover);
+        SoundPlayer sndComplete = new SoundPlayer(ctlBreakoutLib.Properties.Resources.complete);
+        SoundPlayer sndHitPlate = new SoundPlayer(ctlBreakoutLib.Properties.Resources.hitPlate);
+        SoundPlayer sndHitWall = new SoundPlayer(ctlBreakoutLib.Properties.Resources.hitWall);
+        SoundPlayer sndHitBrick = new SoundPlayer(ctlBreakoutLib.Properties.Resources.hitBrick);
 
         public int Count = 0;
         public int Second = 0;
@@ -42,7 +49,6 @@ namespace ctlBreakoutLib
 
                 }
             }
-
         }
 
         private void InitializeGame()
@@ -65,6 +71,7 @@ namespace ctlBreakoutLib
             {
                 InitializeGame();
                 GameTimer.Start();
+                sndHitPlate.Play();
             }
         }
         public void StopGame()
@@ -93,6 +100,16 @@ namespace ctlBreakoutLib
         }
         private void GameOver(bool completed=false)
         {
+            string str = this.GetType().Assembly.Location;
+            if (completed)
+            {
+                sndComplete.Play();
+            }                
+            else
+            {
+                sndGameOver.Play();
+            }
+            
             if (GameTimer.Enabled)
             {
                 GameTimer.Stop();
@@ -190,6 +207,7 @@ namespace ctlBreakoutLib
                 Console.WriteLine("game over");
             }
             Collision();
+            CheckGameOver();
             if (Bricks.Count == 0)
                 GameOver(true);
             if (Count % 10 == 0)
@@ -197,19 +215,36 @@ namespace ctlBreakoutLib
             Count++;
         }
 
+        private void CheckGameOver()
+        {
+            if (ball.Position.y > Size.Height)
+                GameOver();
+        }
 
         private void Collision()
         {
             if (ball.Collision(plate))
+            {
+                sndHitPlate.Play();
                 return;
+            }
+                
             if (ball.Collision(house))
+            {
+                sndHitWall.Play();
                 return;
+            }
+                
             if (ball.Collision(ceiling))
+            {
+                sndHitWall.Play();
                 return;
+            }
             foreach (Brick b in Bricks)
             {
                 if (ball.Collision(b))
                 {
+                    sndHitBrick.Play();
                     Bricks.Remove(b);
                     Score++;
                     return;
@@ -220,6 +255,7 @@ namespace ctlBreakoutLib
         }
         private void ctlBreakout_Load_and_CreateBackBuffer(object sender, EventArgs e)
         {
+            sndVoid.Play();
             var parent = this.Parent;
             while (!(parent is Form)) parent = parent.Parent;
             pForm = parent as Form; ;
