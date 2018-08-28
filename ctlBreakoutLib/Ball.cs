@@ -39,7 +39,7 @@ namespace ctlBreakoutLib
                 Vector l = node[i];
                 Vector u = node[i + 1];
                 Vector iv = GetIntersectVector(l, u);
-                double p_length = this.Size.Width/2 - iv.GetLen();
+                double p_length = this.Size.Width*0.75 - iv.GetLen();
                 if (p_length > 0)
                 {
                     Console.WriteLine("Collide");          
