@@ -19,12 +19,14 @@ namespace Breakout
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            pbxCover.Hide();
             ctlBreakout.StartGame();
             ctlBreakout.Focus();
         }
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
+            pbxCover.Hide();
             ctlBreakout.RestartGame();
             ctlBreakout.Focus();
         }

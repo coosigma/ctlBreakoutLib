@@ -30,22 +30,16 @@ namespace Breakout
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctlBreakout = new ctlBreakoutLib.ctlBreakout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBreakout));
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
+            this.ctlBreakout = new ctlBreakoutLib.ctlBreakout();
+            this.pbxCover = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxCover)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ctlBreakout
-            // 
-            this.ctlBreakout.Location = new System.Drawing.Point(52, 45);
-            this.ctlBreakout.Name = "ctlBreakout";
-            this.ctlBreakout.Resizing = false;
-            this.ctlBreakout.Score = 16;
-            this.ctlBreakout.Size = new System.Drawing.Size(500, 500);
-            this.ctlBreakout.TabIndex = 0;
             // 
             // btnStart
             // 
@@ -97,11 +91,31 @@ namespace Breakout
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
+            // ctlBreakout
+            // 
+            this.ctlBreakout.Location = new System.Drawing.Point(52, 45);
+            this.ctlBreakout.Name = "ctlBreakout";
+            this.ctlBreakout.Resizing = false;
+            this.ctlBreakout.Score = 16;
+            this.ctlBreakout.Size = new System.Drawing.Size(500, 500);
+            this.ctlBreakout.TabIndex = 0;
+            // 
+            // pbxCover
+            // 
+            this.pbxCover.Image = ((System.Drawing.Image)(resources.GetObject("pbxCover.Image")));
+            this.pbxCover.Location = new System.Drawing.Point(52, 45);
+            this.pbxCover.Name = "pbxCover";
+            this.pbxCover.Size = new System.Drawing.Size(500, 500);
+            this.pbxCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbxCover.TabIndex = 7;
+            this.pbxCover.TabStop = false;
+            // 
             // frmBreakout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 603);
+            this.Controls.Add(this.pbxCover);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.btnPause);
@@ -110,7 +124,9 @@ namespace Breakout
             this.Controls.Add(this.ctlBreakout);
             this.Name = "frmBreakout";
             this.Text = "dd";
+            ((System.ComponentModel.ISupportInitialize)(this.pbxCover)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -122,6 +138,7 @@ namespace Breakout
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.PictureBox pbxCover;
     }
 }
 
