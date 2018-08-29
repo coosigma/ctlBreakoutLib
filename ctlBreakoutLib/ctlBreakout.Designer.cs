@@ -18,6 +18,7 @@ namespace ctlBreakoutLib
             if (disposing && (components != null))
             {
                 components.Dispose();
+                Backbuffer.Dispose();
             }
             base.Dispose(disposing);
         }
