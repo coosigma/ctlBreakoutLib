@@ -49,6 +49,12 @@ namespace ctlBreakoutLib
 
                 }
             }
+            sndVoid.Load();
+            sndGameOver.Load();
+            sndComplete.Load();
+            sndHitPlate.Load();
+            sndHitWall.Load();
+            sndHitBrick.Load();
         }
 
         private void InitializeGame()
@@ -100,7 +106,6 @@ namespace ctlBreakoutLib
         }
         private void GameOver(bool completed=false)
         {
-            string str = this.GetType().Assembly.Location;
             if (completed)
             {
                 sndComplete.Play();
