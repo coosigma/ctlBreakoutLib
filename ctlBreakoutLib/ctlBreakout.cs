@@ -22,7 +22,7 @@ namespace ctlBreakoutLib
             ControlStyles.AllPaintingInWmPaint |
             ControlStyles.DoubleBuffer, true);
             gc = new GameControl(this);
-            PlayGround = new Size(Size.Width - 200, Size.Height);
+            PlayGround = new Size(500, 500);
         }
         void ctlBreakout_Paint(object sender, PaintEventArgs e)
         {
