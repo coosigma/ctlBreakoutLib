@@ -17,35 +17,5 @@ namespace Breakout
             InitializeComponent();
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
-        {
-            pbxCover.Hide();
-            ctlBreakout.StartGame();
-            ctlBreakout.Focus();
-        }
-
-        private void btnRestart_Click(object sender, EventArgs e)
-        {
-            pbxCover.Hide();
-            ctlBreakout.RestartGame();
-            ctlBreakout.Focus();
-        }
-
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            ctlBreakout.StopGame();
-            ctlBreakout.Focus();
-        }
-
-        private void btnPause_Click(object sender, EventArgs e)
-        {
-            ctlBreakout.PauseGame();
-            ctlBreakout.Focus();
-        }
-
-        private void btnQuit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
 }

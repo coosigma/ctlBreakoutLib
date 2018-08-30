@@ -41,8 +41,7 @@ namespace ctlBreakoutLib
                 Vector iv = GetIntersectVector(l, u);
                 double p_length = this.Size.Width*0.75 - iv.GetLen();
                 if (p_length > 0)
-                {
-                    Console.WriteLine("Collide");          
+                {       
                     Position += p_length * iv.GetUnit();
                     Offset = GetBounceVector(l, u, f.Offset);
                     return true;
@@ -62,9 +61,7 @@ namespace ctlBreakoutLib
             {
                 pn = w.GetNormal(false).GetProject(Offset);
             }
-            Console.WriteLine("friction: "+friction.x+","+friction.y);
             Vector fn = friction.GetUnit();
-            Console.WriteLine("friction unit: " + fn.x + "," + fn.y);
             return pw - pn + friction.GetUnit();
         }
 
@@ -88,10 +85,9 @@ namespace ctlBreakoutLib
             return p3;
         }
 
-        internal bool CheckOutside()
+        internal bool CheckOutside(Size s)
         {
-            ctlBreakout c = Caller as ctlBreakout;
-            if (Position.y >= c.Size.Height - Size.Height)
+            if (Position.y >= s.Height - Size.Height)
                 return true;
             return false;
         }

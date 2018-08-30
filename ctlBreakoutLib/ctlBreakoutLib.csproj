@@ -50,6 +50,7 @@
       <DependentUpon>ctlBreakout.cs</DependentUpon>
     </Compile>
     <Compile Include="Figure.cs" />
+    <Compile Include="GameControl.cs" />
     <Compile Include="Plate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

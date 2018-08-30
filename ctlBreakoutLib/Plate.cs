@@ -25,15 +25,15 @@ namespace ctlBreakoutLib
             Offset.x = xOffset;
             if (newX < 0)
                 newX = 0;
-            if (newX + this.Size.Width > c.Size.Width)
-                newX = c.Size.Width - this.Size.Width;
+            if (newX + this.Size.Width > c.PlayGround.Width)
+                newX = c.PlayGround.Width - this.Size.Width;
             // Y axis
             double newY = Position.y + yOffset;
             Offset.y = yOffset;
             if (newY < 400)
                 newY = 400;
-            if (newY + this.Size.Height > c.Size.Height)
-                newY = c.Size.Height - this.Size.Height;
+            if (newY + this.Size.Height > c.PlayGround.Height)
+                newY = c.PlayGround.Height - this.Size.Height;
 
             this.Position.x = newX;
             this.Position.y = newY;
