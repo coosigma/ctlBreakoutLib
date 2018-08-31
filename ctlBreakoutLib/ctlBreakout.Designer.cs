@@ -40,9 +40,10 @@ namespace ctlBreakoutLib
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(549, 389);
+            this.btnQuit.Location = new System.Drawing.Point(509, 369);
+            this.btnQuit.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(96, 50);
+            this.btnQuit.Size = new System.Drawing.Size(72, 43);
             this.btnQuit.TabIndex = 4;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
@@ -50,9 +51,10 @@ namespace ctlBreakoutLib
             // 
             // btnRestart
             // 
-            this.btnRestart.Location = new System.Drawing.Point(549, 304);
+            this.btnRestart.Location = new System.Drawing.Point(509, 295);
+            this.btnRestart.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(96, 50);
+            this.btnRestart.Size = new System.Drawing.Size(72, 43);
             this.btnRestart.TabIndex = 3;
             this.btnRestart.Text = "Restart";
             this.btnRestart.UseVisualStyleBackColor = true;
@@ -60,9 +62,10 @@ namespace ctlBreakoutLib
             // 
             // btnPause
             // 
-            this.btnPause.Location = new System.Drawing.Point(549, 219);
+            this.btnPause.Location = new System.Drawing.Point(509, 222);
+            this.btnPause.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(96, 50);
+            this.btnPause.Size = new System.Drawing.Size(72, 43);
             this.btnPause.TabIndex = 2;
             this.btnPause.Text = "Pause";
             this.btnPause.UseVisualStyleBackColor = true;
@@ -70,9 +73,10 @@ namespace ctlBreakoutLib
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(549, 134);
+            this.btnStop.Location = new System.Drawing.Point(509, 148);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(96, 50);
+            this.btnStop.Size = new System.Drawing.Size(72, 43);
             this.btnStop.TabIndex = 1;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -80,9 +84,10 @@ namespace ctlBreakoutLib
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(549, 49);
+            this.btnStart.Location = new System.Drawing.Point(509, 74);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(96, 50);
+            this.btnStart.Size = new System.Drawing.Size(72, 43);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -90,15 +95,16 @@ namespace ctlBreakoutLib
             // 
             // ctlBreakout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "ctlBreakout";
-            this.Size = new System.Drawing.Size(680, 500);
+            this.Size = new System.Drawing.Size(590, 505);
             this.Load += new System.EventHandler(this.ctlBreakout_Load_and_CreateBackBuffer);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ctlBreakout_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ctlBreakout_KeyDown);
