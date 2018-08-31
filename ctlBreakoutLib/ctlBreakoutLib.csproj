@@ -71,9 +71,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="sound\complete.wav" />
   </ItemGroup>
@@ -91,6 +89,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="sound\Void.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cover.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

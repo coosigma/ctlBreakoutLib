@@ -54,7 +54,7 @@ namespace ctlBreakoutLib
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            //pbxCover.Hide();
+            pbxCover.Hide();
             gc.StartGame();
         }
 
@@ -70,7 +70,7 @@ namespace ctlBreakoutLib
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
-            //pbxCover.Hide();
+            pbxCover.Hide();
             gc.RestartGame();
 
         }

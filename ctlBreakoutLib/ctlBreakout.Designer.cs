@@ -36,6 +36,8 @@ namespace ctlBreakoutLib
             this.btnPause = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
+            this.pbxCover = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxCover)).BeginInit();
             this.SuspendLayout();
             // 
             // btnQuit
@@ -88,10 +90,21 @@ namespace ctlBreakoutLib
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
+            // pbxCover
+            // 
+            this.pbxCover.Image = global::ctlBreakoutLib.Properties.Resources.Cover;
+            this.pbxCover.Location = new System.Drawing.Point(0, 0);
+            this.pbxCover.Name = "pbxCover";
+            this.pbxCover.Size = new System.Drawing.Size(500, 500);
+            this.pbxCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbxCover.TabIndex = 5;
+            this.pbxCover.TabStop = false;
+            // 
             // ctlBreakout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pbxCover);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.btnPause);
@@ -103,7 +116,9 @@ namespace ctlBreakoutLib
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ctlBreakout_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ctlBreakout_KeyDown);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.ctlBreakout_PreviewKeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxCover)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -114,5 +129,6 @@ namespace ctlBreakoutLib
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.PictureBox pbxCover;
     }
 }
