@@ -67,8 +67,8 @@ namespace ctlBreakoutLib
             // Create Figure objects.           
             plate = new Plate(CB, new Vector(200d, CB.Size.Height - 20), new Size(50, 11), Color.White);
             ball = new Ball(CB, new Vector(plate.Position.x + plate.Size.Width / 2, plate.Position.y - plate.Size.Height), new Size(10, 10), Color.Yellow) { Offset = new Vector(bo, -1.5) };
-            house = new House(CB, new Vector(0, 0), new Size(CB.Size.Width, CB.Size.Height + ball.Size.Height), Color.Black);
-            ceiling = new Brick(CB, new Vector(0, 50d), new Size(CB.Size.Width, 10), Color.Gray);
+            house = new House(CB, new Vector(0, 0), new Size(CB.PlayGround.Width, CB.PlayGround.Height + ball.Size.Height), Color.Black);
+            ceiling = new Brick(CB, new Vector(0, 50d), new Size(CB.PlayGround.Width, 10), Color.Gray);
             CreateBricks();
             Count = 0;
             Second = 0;
@@ -159,7 +159,7 @@ namespace ctlBreakoutLib
             String[] names = Enum.GetNames(typeof(BrickColors));
             Size bSize = new Size(50, 12);
             int sPointY = Convert.ToInt32(ceiling.Position.y);
-            for (int i = 30; i < CB.Size.Width; i += 80)
+            for (int i = 30; i < CB.PlayGround.Width; i += 80)
             {
                 for (int j = sPointY + 40; j < sPointY + 300; j += 40)
                 {
@@ -215,7 +215,7 @@ namespace ctlBreakoutLib
             Second = Count / 100;
             Draw();
             ball.Update();
-            if (ball.CheckOutside(CB.Size))
+            if (ball.CheckOutside(CB.PlayGround))
             {
                 GameOver();
             }
@@ -230,7 +230,7 @@ namespace ctlBreakoutLib
 
         private void CheckGameOver()
         {
-            if (ball.Position.y > CB.Size.Height)
+            if (ball.Position.y > CB.PlayGround.Height)
                 GameOver();
         }
 
