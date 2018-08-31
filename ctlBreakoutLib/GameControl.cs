@@ -65,7 +65,7 @@ namespace ctlBreakoutLib
             Random rnd = new Random();
             double bo = rnd.NextDouble() - 0.5;
             // Create Figure objects.           
-            plate = new Plate(CB, new Vector(200d, CB.Size.Height - 20), new Size(50, 11), Color.White);
+            plate = new Plate(CB, new Vector(200d, CB.PlayGround.Height - 20), new Size(50, 11), Color.White);
             ball = new Ball(CB, new Vector(plate.Position.x + plate.Size.Width / 2, plate.Position.y - plate.Size.Height), new Size(10, 10), Color.Yellow) { Offset = new Vector(bo, -1.5) };
             house = new House(CB, new Vector(0, 0), new Size(CB.PlayGround.Width, CB.PlayGround.Height + ball.Size.Height), Color.Black);
             ceiling = new Brick(CB, new Vector(0, 50d), new Size(CB.PlayGround.Width, 10), Color.Gray);
