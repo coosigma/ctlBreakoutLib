@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace ctlBreakoutLib
 {
+    // Plate class. User control this object to rebound the ball.
     class Plate : Figure
     {
         public Plate(Object o, Vector p, Size s, Color c) : base(o, p, s, c)

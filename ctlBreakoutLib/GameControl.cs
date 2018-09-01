@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace ctlBreakoutLib
 {
+    // Controller Class: Accessing the objects in the game and receive player input from UI.
     class GameControl
     {
         enum BrickColors { DodgerBlue, ForestGreen, MediumVioletRed, Goldenrod }
@@ -19,7 +20,7 @@ namespace ctlBreakoutLib
         Ball ball;
         public Plate plate;
         ArrayList Bricks;
-        House house;
+        Room room;
         Brick ceiling;
         SoundPlayer sndVoid = new SoundPlayer(ctlBreakoutLib.Properties.Resources.Void);
         SoundPlayer sndGameOver = new SoundPlayer(ctlBreakoutLib.Properties.Resources.gameover);
@@ -43,23 +44,6 @@ namespace ctlBreakoutLib
             sndHitBrick.Load();
         }
 
-        private void GameControl_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            e.IsInputKey = true;
-        }
-
-        private void GameControl_KeyDown(object sender, KeyEventArgs e)
-        {
-            Console.WriteLine(e.KeyCode);
-            int ControlSpeed = 15;
-            if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left) // left
-                if (plate != null)
-                    plate.Move(-ControlSpeed, 0);
-                else if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right) // right
-                    if (plate != null)
-                        plate.Move(ControlSpeed, 0);
-        }
-
         private void InitializeGame()
         {
             Random rnd = new Random();
@@ -67,7 +51,7 @@ namespace ctlBreakoutLib
             // Create Figure objects.           
             plate = new Plate(CB, new Vector(200d, CB.PlayGround.Height - 20), new Size(50, 11), Color.White);
             ball = new Ball(CB, new Vector(plate.Position.x + plate.Size.Width / 2, plate.Position.y - plate.Size.Height), new Size(10, 10), Color.Yellow) { Offset = new Vector(bo, -1.5) };
-            house = new House(CB, new Vector(0, 0), new Size(CB.PlayGround.Width, CB.PlayGround.Height + ball.Size.Height), Color.Black);
+            room = new Room(CB, new Vector(0, 0), new Size(CB.PlayGround.Width, CB.PlayGround.Height + ball.Size.Height), Color.Black);
             ceiling = new Brick(CB, new Vector(0, 50d), new Size(CB.PlayGround.Width, 10), Color.Gray);
             CreateBricks();
             Count = 0;
@@ -170,13 +154,6 @@ namespace ctlBreakoutLib
             }
         }
 
-        void ctlBreakout_Paint(object sender, PaintEventArgs e)
-        {
-            if (CB.Backbuffer != null)
-            {
-                e.Graphics.DrawImageUnscaled(CB.Backbuffer, Point.Empty);
-            }
-        }
 
         void Draw()
         {
@@ -221,11 +198,15 @@ namespace ctlBreakoutLib
             }
             Collision();
             CheckGameOver();
-            if (Bricks.Count == 0)
-                GameOver(true);
+            CheckCount(Bricks);
             if (Count % 10 == 0)
                 plate.Update();
             Count++;
+        }
+        void CheckCount(ArrayList al)
+        {
+            if (al.Count == 0)
+                GameOver(true);
         }
 
         private void CheckGameOver()
@@ -242,7 +223,7 @@ namespace ctlBreakoutLib
                 return;
             }
 
-            if (ball.Collision(house))
+            if (ball.Collision(room))
             {
                 sndHitWall.Play();
                 return;

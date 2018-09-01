@@ -31,27 +31,25 @@ namespace Breakout
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBreakout));
-            this.ctlBreakout1 = new ctlBreakoutLib.ctlBreakout();
+            this.ctlBreakout = new ctlBreakoutLib.ctlBreakout();
             this.SuspendLayout();
             // 
-            // ctlBreakout1
+            // ctlBreakout
             // 
-            this.ctlBreakout1.Backbuffer = ((System.Drawing.Bitmap)(resources.GetObject("ctlBreakout1.Backbuffer")));
-            this.ctlBreakout1.Location = new System.Drawing.Point(2, 3);
-            this.ctlBreakout1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.ctlBreakout1.Name = "ctlBreakout1";
-            this.ctlBreakout1.PlayGround = new System.Drawing.Size(500, 500);
-            this.ctlBreakout1.Resizing = false;
-            this.ctlBreakout1.Size = new System.Drawing.Size(580, 505);
-            this.ctlBreakout1.TabIndex = 0;
+            this.ctlBreakout.Backbuffer = ((System.Drawing.Bitmap)(resources.GetObject("ctlBreakout.Backbuffer")));
+            this.ctlBreakout.Location = new System.Drawing.Point(3, 3);
+            this.ctlBreakout.Name = "ctlBreakout";
+            this.ctlBreakout.PlayGround = new System.Drawing.Size(500, 500);
+            this.ctlBreakout.Resizing = false;
+            this.ctlBreakout.Size = new System.Drawing.Size(784, 583);
+            this.ctlBreakout.TabIndex = 0;
             // 
             // frmBreakout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 518);
-            this.Controls.Add(this.ctlBreakout1);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ClientSize = new System.Drawing.Size(792, 598);
+            this.Controls.Add(this.ctlBreakout);
             this.Name = "frmBreakout";
             this.Text = "Breakout";
             this.ResumeLayout(false);
@@ -60,7 +58,7 @@ namespace Breakout
 
         #endregion
 
-        private ctlBreakoutLib.ctlBreakout ctlBreakout1;
+        private ctlBreakoutLib.ctlBreakout ctlBreakout;
     }
 }
 

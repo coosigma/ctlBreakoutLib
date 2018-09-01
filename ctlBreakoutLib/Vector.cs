@@ -3,6 +3,7 @@ using System.Drawing;
 
 namespace ctlBreakoutLib
 {
+    // Vector class. It has two values and can do some vector calculations.
     public class Vector
     {
         public double x { get; set; }

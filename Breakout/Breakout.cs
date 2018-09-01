@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Breakout
 {
+    // Test program form.
     public partial class frmBreakout : Form
     {
         public frmBreakout()

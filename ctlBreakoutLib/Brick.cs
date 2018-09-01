@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ctlBreakoutLib
 {
+    // Brick class. The object which is going to be eliminated by the ball.
     class Brick : Figure
     {
         enum Status { Exists, Vacancy }

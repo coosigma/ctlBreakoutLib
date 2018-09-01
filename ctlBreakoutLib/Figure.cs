@@ -3,6 +3,7 @@ using System.Drawing;
 
 namespace ctlBreakoutLib
 {
+    // Super class which is inherited by objects in the game.
     abstract class Figure
     {
         public Vector Position { get; set; }

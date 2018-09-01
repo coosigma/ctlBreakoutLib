@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ctlBreakoutLib
 {
+    // Ball class. It can rebound and hit the bricks.
     class Ball : Figure
     {
         public Ball(Object o, Vector p, Size s, Color c) : base(o, p, s, c)

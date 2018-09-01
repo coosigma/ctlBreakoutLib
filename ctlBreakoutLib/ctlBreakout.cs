@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace ctlBreakoutLib
 {
+    // Interface class. Receive player input and display game views.
     public partial class ctlBreakout : UserControl
     {
         public bool Resizing { get; set; }
