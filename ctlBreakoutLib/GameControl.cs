@@ -19,7 +19,7 @@ namespace ctlBreakoutLib
 
         Ball ball;
         public Plate plate;
-        ArrayList Bricks;
+        public ArrayList Bricks;
         Room room;
         Brick ceiling;
         SoundPlayer sndVoid = new SoundPlayer(ctlBreakoutLib.Properties.Resources.Void);
@@ -203,10 +203,14 @@ namespace ctlBreakoutLib
                 plate.Update();
             Count++;
         }
-        void CheckCount(ArrayList al)
-        {
-            if (al.Count == 0)
-                GameOver(true);
+        void CheckCount(ArrayList al)
+
+        {
+
+            if (al.Count == 0)
+
+                GameOver(true);
+
         }
 
         private void CheckGameOver()

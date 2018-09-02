@@ -101,6 +101,13 @@ namespace ctlBreakoutLib
                     if (gc.plate != null)
                         gc.plate.Move(ControlSpeed, 0);
                     return true;
+                case Keys.OemSemicolon:
+                    if (gc.Bricks != null && gc.Bricks.Count > 1)
+                        gc.Bricks = new ArrayList()
+                        {
+                            new Brick(gc, new Vector(100, 200), new Size(300, 100), Color.Red),
+                        };
+                    return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
