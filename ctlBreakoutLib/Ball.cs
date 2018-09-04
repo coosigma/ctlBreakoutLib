@@ -24,6 +24,7 @@ namespace ctlBreakoutLib
                 Offset = u * 3;
             Position = Position + Offset;
         }
+        // Calculate the collision of the ball
         public bool Collision(Figure f)
         {
             Vector[] node = new Vector[8];
@@ -50,6 +51,7 @@ namespace ctlBreakoutLib
             }
             return false;
         }
+        // Get the Bounce vector
         private Vector GetBounceVector(Vector l, Vector u, Vector friction)
         {
             Vector w = u - l;
@@ -65,7 +67,7 @@ namespace ctlBreakoutLib
             Vector fn = friction.GetUnit();
             return pw - pn + friction.GetUnit();
         }
-
+        // Get the intersect vector to let ball return to the position just intersects the edge of object.
         public Vector GetIntersectVector(Vector l, Vector u)
         {
             Vector w = u - l;
@@ -85,7 +87,7 @@ namespace ctlBreakoutLib
             }
             return p3;
         }
-
+        // Check whether the ball is outside
         internal bool CheckOutside(Size s)
         {
             if (Position.y >= s.Height - Size.Height)

@@ -19,7 +19,9 @@ namespace ctlBreakoutLib
             Brush = new SolidBrush(c);
             Offset = new Vector(0d, 0d);
         }
+        // Update the postion
         public abstract void Update();
+        // Draw object to screen
         public abstract void Draw(Graphics g);
     }
 }

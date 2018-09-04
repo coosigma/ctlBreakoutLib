@@ -43,7 +43,7 @@ namespace ctlBreakoutLib
             sndHitWall.Load();
             sndHitBrick.Load();
         }
-
+        // Initialize Game
         private void InitializeGame()
         {
             Random rnd = new Random();
@@ -58,6 +58,7 @@ namespace ctlBreakoutLib
             Second = 0;
             Score = 0;
         }
+        // Start game
         public void StartGame()
         {
             if (!GameTimer.Enabled)
@@ -67,6 +68,7 @@ namespace ctlBreakoutLib
                 sndHitPlate.Play();
             }
         }
+        // Stop game
         public void StopGame(bool restart = false)
         {
             if (Count <= 0)
@@ -80,6 +82,7 @@ namespace ctlBreakoutLib
                 GameOver();
             }
         }
+        // Pause game
         public void PauseGame()
         {
             if (Count <= 0)
@@ -93,11 +96,13 @@ namespace ctlBreakoutLib
                 GameTimer.Start();
             }
         }
+        // Restart game
         public void RestartGame()
         {
             StopGame(true);
             StartGame();
         }
+        // Treat "game over" and "game complete"
         private void GameOver(bool completed = false)
         {
             if (completed)
@@ -134,8 +139,8 @@ namespace ctlBreakoutLib
                 }
                 CB.Invalidate();
             }
-
         }
+        // Create bricks
         private void CreateBricks()
         {
             Bricks = new ArrayList();
@@ -153,8 +158,7 @@ namespace ctlBreakoutLib
                 }
             }
         }
-
-
+        // Draw to screen
         void Draw()
         {
             if (CB.Backbuffer != null)
@@ -174,7 +178,7 @@ namespace ctlBreakoutLib
                 CB.Invalidate();
             }
         }
-
+        // Show information on the top of the playground
         private void ShowInfo(Graphics g)
         {
             String score = Score.ToString().PadLeft(3, '0');
@@ -186,7 +190,7 @@ namespace ctlBreakoutLib
             drawPoint = new PointF(400.0F, 5.0F);
             g.DrawString(score, drawFont, drawBrush, drawPoint);
         }
-
+        // Timer tick (run every interval)
         void GameTimer_Tick(object sender, EventArgs e)
         {
             Second = Count / 100;
@@ -203,6 +207,7 @@ namespace ctlBreakoutLib
                 plate.Update();
             Count++;
         }
+        // Check the bricks count, if it is 0 then the game complete
         void CheckCount(ArrayList al)
 
         {
@@ -212,13 +217,13 @@ namespace ctlBreakoutLib
                 GameOver(true);
 
         }
-
+        // Check game over (if the positon of the ball is lower than ground)
         private void CheckGameOver()
         {
             if (ball.Position.y > CB.PlayGround.Height)
                 GameOver();
         }
-
+        // Detect collision of the ball
         private void Collision()
         {
             if (ball.Collision(plate))

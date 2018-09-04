@@ -18,6 +18,7 @@ namespace ctlBreakoutLib
         {
             g.FillRectangle(this.Brush, new Rectangle(this.Position.ToPoint(), this.Size));
         }
+        // Move the plate
         public void Move(int xOffset, int yOffset)
         {
             ctlBreakout c = Caller as ctlBreakout;

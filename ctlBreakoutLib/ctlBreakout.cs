@@ -25,6 +25,7 @@ namespace ctlBreakoutLib
             gc = new GameControl(this);
             PlayGround = new Size(500, 500);
         }
+        // Paint function to handle paint event
         void ctlBreakout_Paint(object sender, PaintEventArgs e)
         {
             if (Backbuffer != null)
@@ -32,6 +33,7 @@ namespace ctlBreakoutLib
                 e.Graphics.DrawImageUnscaled(Backbuffer, Point.Empty);
             }
         }
+        // Load and Create buffer function to handle the event
         private void ctlBreakout_Load_and_CreateBackBuffer(object sender, EventArgs e)
         {
             SoundPlayer sndVoid = new SoundPlayer(ctlBreakoutLib.Properties.Resources.Void);
@@ -47,39 +49,40 @@ namespace ctlBreakoutLib
         private void ctlBreakout_KeyDown(object sender, KeyEventArgs e)
         {
         }
-
+        // Activate the arrow key
         private void ctlBreakout_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             e.IsInputKey = true;
         }
-
+        // Button: Start Game
         private void btnStart_Click(object sender, EventArgs e)
         {
             //pbxCover.Hide();
             gc.StartGame();
         }
-
+        // Button: Stop Game
         private void btnStop_Click(object sender, EventArgs e)
         {
             gc.StopGame();
         }
-
+        //Button: Pause Game
         private void btnPause_Click(object sender, EventArgs e)
         {
             gc.PauseGame();
         }
-
+        // Button: Restart Game
         private void btnRestart_Click(object sender, EventArgs e)
         {
             //pbxCover.Hide();
             gc.RestartGame();
 
         }
-
+        // Button: Quit application
         private void btnQuit_Click(object sender, EventArgs e)
         {
             pForm.Close();
         }
+        // Handle the key press
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)//取消方向键对控件的焦点的控件，用自己自定义的函数处理各个方向键的处理函数
         {
             int ControlSpeed = 15;
